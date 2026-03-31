@@ -21,3 +21,7 @@ Bu proje, AWS S3 üzerine yüklenen log dosyalarını otomatik olarak analiz ede
 - `docker build -t log-analyzer .` ile imajı oluşturun.
 - İmajı AWS ECR'a pushlayın.
 - Lambda fonksiyonunu bu imajla oluşturun ve S3 tetikleyicisini ekleyin.
+## 📊 Örnek Rapor Çıktısı
+Aşağıdaki görsel, bir log dosyası yüklendikten sonra sistemin otomatik olarak ürettiği analiz raporunu göstermektedir:
+
+![Otomatik Rapor Çıktısı](report_preview.png)
