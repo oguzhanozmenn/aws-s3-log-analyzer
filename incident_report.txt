@@ -1,0 +1,7 @@
+--- OTOMATIK LOG RAPORU ---
+Toplam Kritik Hata Sayısı: 4
+------------------------
+2026-03-31 10:05:22 ERROR Database connection failed: Timeout.
+2026-03-31 10:12:10 CRITICAL Disk space low on /dev/sda1
+2026-03-31 10:20:15 ERROR 404 Not Found: /api/v1/resource
+2026-03-31 10:30:00 CRITICAL Kernel panic: CPU stall detected.

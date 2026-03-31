@@ -1,21 +1,23 @@
-# 🚀 AWS S3 Automated Log Analyzer
+# Serverless Log Analyzer (Docker + AWS Lambda) 🚀
 
-Bu proje, AWS CloudShell ve S3 servislerini kullanarak sunucu günlüklerini (logs) otomatik olarak analiz eden bir Bash script otomasyonudur.
+Bu proje, AWS S3 üzerine yüklenen log dosyalarını otomatik olarak analiz eden ve hata raporları oluşturan, Docker konteyner tabanlı bir Serverless mimaridir.
 
 ## 🛠 Kullanılan Teknolojiler
-* **Bulut Sağlayıcı:** AWS (Amazon Web Services)
-* **Depolama:** Amazon S3
-* **Ortam:** AWS CloudShell (Linux Terminal)
-* **Dil:** Bash Scripting (Grep, Sed, Awk)
+- **AWS Lambda:** Olay güdümlü (Event-driven) hesaplama.
+- **Docker:** Lambda üzerinde çalışan özel Python imajı.
+- **Amazon S3:** Ham logların depolanması ve raporların saklanması.
+- **Amazon ECR:** Docker imajlarının bulutta barındırılması.
+- **Python (Boto3):** S3 üzerindeki dosyaları işleyen analiz scripti.
 
-## 📋 Proje Akışı
-1. S3 üzerindeki `raw-logs` klasöründen ham log dosyası çekilir.
-2. Bash script, dosya içindeki **ERROR** ve **CRITICAL** seviyesindeki hataları ayıklar.
-3. Bulunan hata sayısı hesaplanır ve bir özet rapor oluşturulur.
-4. Oluşturulan `incident_report.txt` dosyası S3 üzerindeki `reports` klasörüne geri yüklenir.
+## 🏗 Mimari Nasıl Çalışıyor?
+1. Kullanıcı `raw-logs/` klasörüne bir `.log` veya `.txt` dosyası yükler.
+2. S3, bir "Object Created" olayı tetikler.
+3. AWS Lambda, ECR'daki Docker konteynerini ayağa kaldırır.
+4. Konteyner içindeki Python scripti dosyayı indirir, `ERROR` ve `CRITICAL` satırlarını ayıklar.
+5. Sonuçları `reports/` klasörüne yeni bir rapor dosyası olarak yükler.
 
-## 🚀 Nasıl Çalıştırılır?
-```bash
-chmod +x analiz.sh
-./analiz.sh
-```
+## 🚀 Kurulum ve Çalıştırma
+- Projeyi klonlayın.
+- `docker build -t log-analyzer .` ile imajı oluşturun.
+- İmajı AWS ECR'a pushlayın.
+- Lambda fonksiyonunu bu imajla oluşturun ve S3 tetikleyicisini ekleyin.
