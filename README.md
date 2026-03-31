@@ -24,4 +24,4 @@ Bu proje, AWS S3 üzerine yüklenen log dosyalarını otomatik olarak analiz ede
 ## 📊 Örnek Rapor Çıktısı
 Aşağıdaki görsel, bir log dosyası yüklendikten sonra sistemin otomatik olarak ürettiği analiz raporunu göstermektedir:
 
-![Otomatik Rapor Çıktısı](report_preview.png)
+![Otomatik Rapor Çıktısı](rapor.png)
